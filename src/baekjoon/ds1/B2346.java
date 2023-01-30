@@ -1,7 +1,11 @@
+package baekjoon.ds1;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.StringTokenizer;
 
 
 class Ballon {
@@ -13,7 +17,7 @@ class Ballon {
         this.val = val;
     }
 }
-public class Main {
+public class B2346 {
 
     public static void main(String[] args) throws IOException {
 
