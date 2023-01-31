@@ -18,26 +18,25 @@ public class B1874 {
         int n = Integer.parseInt(br.readLine());
 
         boolean escape = false;
+
         int tmp = 1;
         for (int i = 0; i < n; ++i) {
+
             if (escape == true) break;
 
             int seq = Integer.parseInt(br.readLine());
 
             for (; tmp <= seq; ++tmp) {
                 stack.push(tmp);
-                sb.append("+ \n");
+                sb.append("+\n");
             }
 
             if (stack.peek() == seq) {
                 stack.pop();
-                sb.append("- \n");
+                sb.append("-\n");
             } else escape = true;
-
-
         }
-
-        if (escape == true) System.out.println("NO");
-        else System.out.println(sb);
+        if (escape == false) System.out.println(sb);
+        else System.out.println("NO");
     }
 }
