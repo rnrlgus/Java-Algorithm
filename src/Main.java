@@ -5,75 +5,74 @@ import java.util.*;
 
 public class Main {
 
-
-    static boolean check(int[] arr) {
-        boolean result = true;
-        for (int i = 1; i < arr.length; ++i) {
-            if (arr[i] < arr[i-1]) result = false;
-        }
-
-        return result;
-    }
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+//        StringBuilder sb = new StringBuilder();
 
-        int n = Integer.parseInt(br.readLine());
-        String[] tmp = br.readLine().split(" ");
-        int[] arr = new int[tmp.length];
+        String[] nm = br.readLine().split(" ");
+        int n = Integer.parseInt(nm[0]); // 행
+        int m = Integer.parseInt(nm[1]); // 열
 
-        for (int i = 0; i < arr.length; ++i) {
-            arr[i] = Integer.parseInt(tmp[i]);
+        int[][] map = new int[n][m];
+
+        for (int i = 0; i < n; ++i) {
+            String[] tmp = br.readLine().split(" ");
+            for (int j = 0; j < m; ++j) {
+                map[i][j] = Integer.parseInt(tmp[j]);
+            }
         }
 
-        int start=0;
-        int end=0;
+        int[][][] shape = {
+                // 막대기
+                {{0,0}, {0,1}, {0,2}, {0,3}},
+                {{0,0}, {1,0}, {2,0}, {3,0}},
+                // 주먹
+                {{0,0}, {1,0}, {0,1}, {1,1}},
+                // L
+                {{0,0}, {0,1}, {0,2}, {1,2}},
+                {{0,0}, {1,0}, {2,0}, {0,1}},
+                {{0,0}, {1,0}, {1,1}, {1,2}},
+                {{2,0}, {0,1}, {1,1}, {2,1}},
+                {{1,0}, {1,1}, {1,2}, {0,2}},
+                {{0,0}, {0,1}, {1,1}, {2,1}},
+                {{0,0}, {1,0}, {0,1}, {0,2}},
+                {{0,0}, {1,0}, {2,0}, {2,1}},
+                // ㅗ
+                {{0,0}, {1,0}, {2,0}, {1,1}},
+                {{1,0}, {0,1}, {1,1}, {1,2}},
+                {{0,1}, {1,0}, {1,1}, {2,1}},
+                {{0,0}, {0,1}, {0,2}, {1,1}},
+                // N
+                {{0,0}, {0,1}, {1,1}, {1,2}},
+                {{0,1}, {1,1}, {1,0}, {2,0}},
+                {{1,0}, {1,1}, {0,1}, {0,2}},
+                {{0,0}, {1,0}, {1,1}, {2,1}}
+        };
+        int max = Integer.MIN_VALUE;
 
-        int min = 0;
-        int cnt = 0;
-        while(true) {
-            if (cnt > 100) {
-                System.out.println(-1);
-                break;
-            }
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
 
-            if (check(arr)) {
-                System.out.println(cnt);
-                System.out.println(sb);
-                break;
-            }
+                for (int k = 0; k < shape.length; ++k) {
 
-            // 구간 찾기
-            for (int i = min; i < n; ++i) {
-                min += 1;
-                if (arr[i] == min) {
-                    continue;
-                } else {
-                    start = i;
-                }
+                    int tmp = 0;
+                    for (int l = 0; l < 4; ++l) {
+                        int nx = j + shape[k][l][0];
+                        int ny = i + shape[k][l][1];
 
-                for (int j = start+1; j < n; ++j) {
-                    if (arr[j] == min) {
-                        end = j;
-                        break;
+                        if (nx >= m || ny >= n) {
+                            break;
+                        }
+
+                        tmp += map[ny][nx];
                     }
+
+                    if (max < tmp) max = tmp;
+//                    System.out.println(max);
                 }
-                break;
             }
-            sb.append(start+1).append(" ").append(end+1).append("\n");
-
-            // 뒤집기
-            int asd = (end - start+1) / 2;
-            for (int i = 0; i < asd; ++i) {
-                int temp = arr[start];
-                arr[start] = arr[end];
-                arr[end] = temp;
-                start++;
-                end--;
-            }
-            cnt++;
         }
-
+        System.out.println(max);
     }
 }
