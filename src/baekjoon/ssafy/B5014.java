@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.StringTokenizer;
 
@@ -41,16 +42,18 @@ public class B5014 {
                     queue.offer(next);
                 }
             }
+            System.out.print(next + " ");
+
             next = curr - d;
             if (next >=1 && next <= f ) {
                 if (visited[next] == 0) {
                     visited[next] = visited[curr]+1;
                     queue.offer(next);
-
                 }
             }
+            System.out.print(next + " \n");
 
-//            System.out.println(Arrays.toString(visited));
+            System.out.println(Arrays.toString(visited));
         }
 
         if(visited[g] != 0) System.out.println(visited[g]-1);
