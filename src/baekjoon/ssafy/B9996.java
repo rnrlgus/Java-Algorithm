@@ -1,7 +1,9 @@
+package baekjoon.ssafy;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Main {
+public class B9996 {
 
     static void solution(String input, String[] pattern) {
         String result = "DA";
