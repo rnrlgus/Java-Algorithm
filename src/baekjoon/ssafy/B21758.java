@@ -1,8 +1,10 @@
+package baekjoon.ssafy;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class B21758 {
 
     /**
      * 벌 두마리는 꿀통으로 가면서 꿀을 빤다(벌통 포함).(각 벌이 출발한 장소는 못빨아)
