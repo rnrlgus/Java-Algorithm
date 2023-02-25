@@ -1,16 +1,18 @@
+package baekjoon.ssafy;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
-public class Main {
+public class B15656 {
 
     static int N, M;
     static int[] nums;
     static boolean[] selected;
     static int[] result;
     static StringBuilder sb;
-    static HashSet<String> set;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         sb = new StringBuilder();
@@ -21,7 +23,6 @@ public class Main {
         result = new int[M];
         nums = new int[N];
         selected = new boolean[N];
-        set = new LinkedHashSet<>();
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; ++i) {
@@ -29,30 +30,26 @@ public class Main {
         }
         Arrays.sort(nums);
 
-        dfs(0);
-        for (String s :set) {
-            System.out.print(s);
-        }
+        dfs(0, 0);
+        System.out.println(sb);
     }
 
-    static void dfs(int dep) {
+    static void dfs(int dep, int start) {
         if (dep == M) {
-            sb = new StringBuilder();
             for (int x : result) {
                 sb.append(x + " ");
             }
             sb.append("\n");
-            set.add(sb.toString());
             return ;
         }
 
         for (int i = 0; i < N; ++i) {
-            if (selected[i]) continue;
+//            if (selected[i]) continue;
 
-            selected[i] = true;
+//            selected[i] = true;
             result[dep] = nums[i];
-            dfs(dep+1);
-            selected[i] = false;
+            dfs(dep+1, i+1);
+//            selected[i] = false;
         }
 
     }
