@@ -16,6 +16,13 @@ public class B21758 {
      *
      * 그냥 반복문 -> n^2 -> time out (n : 10만, 시간 : 1초)
      * 누적합 써야겠다 -> n
+     *
+     * 벌, 꿀통 배치 :
+     *  완탐 : n^3 절대 불가능 백트래킹 해도 절대 안될각
+     *  규칙을 찾아야해 -> n
+     *
+     *
+     *
      */
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
