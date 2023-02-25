@@ -1,9 +1,14 @@
+package baekjoon.ssafy;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.StringTokenizer;
 
-public class Main {
+public class B15664 {
 
     static int N, M;
     static int[] nums;
@@ -47,11 +52,11 @@ public class Main {
         }
 
         for (int i = start; i < N; ++i) {
-//            if (selected[i]) continue;
+            if (selected[i]) continue;
 
             selected[i] = true;
             result[dep] = nums[i];
-            dfs(dep+1,i);
+            dfs(dep+1, i+1);
             selected[i] = false;
         }
 
