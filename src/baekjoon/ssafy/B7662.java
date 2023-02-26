@@ -1,8 +1,10 @@
+package baekjoon.ssafy;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+public class B7662 {
 
 
     public static void main(String[] args) throws Exception {
