@@ -1,3 +1,5 @@
+package baekjoon.ssafy;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +12,7 @@ import java.util.*;
  *
  * 펭귄에서부터 bfs 돌리면서 각 지지대 얼음까지의 거리 구하고 정렬 -> 2개 뽑아서 얼음 개수에서 뺴기
  */
-public class Main {
+public class B21738 {
 
     static int N, S, P;
     static ArrayList<Integer>[] adjList;
